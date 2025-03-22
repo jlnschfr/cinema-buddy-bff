@@ -1,6 +1,14 @@
 export interface Movie {
   title: string;
   releaseDate: string;
+  vote: string;
+}
+
+export interface RecommendationResponse {
+  movies: Movie[];
+  page: number;
+  totalPages: number;
+  totalResults: number;
 }
 
 export type MovieDbResponse = {

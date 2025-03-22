@@ -1,8 +1,9 @@
-import { Movie, MovieDbResponse } from "./recommendations";
+import { Movie, MovieDbResponse, RecommendationResponse } from "./recommendations";
 
 export class RecommendationsService {
-  public async get(categories: string[]): Promise<Movie[]> {
-    const url = 'https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=28&year=2025';
+  public async get(genres: string[], year: number, page: number = 1): Promise<RecommendationResponse> {
+    const genresProcessed = genres.join('|');
+    const url = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=popularity.desc&with_genres=${genresProcessed}&primary_release_year=${year}`;
     const options = {
       method: "GET",
       headers: {
@@ -16,16 +17,20 @@ export class RecommendationsService {
 
     const movies: Movie[] = json.results.map((movie) => ({
       title: movie.original_title,
-      releaseDate: movie.release_date
+      releaseDate: movie.release_date,
+      vote: movie.vote_average.toString(),
     }));
 
-    return movies;
+    return {
+      movies,
+      page: json.page,
+      totalPages: json.total_pages,
+      totalResults: json.total_results
+    }
   }
 }
 
 /* 
 todos: 
-* watch task
-* make genres and year dynamic in recommendationsService
 * endpoint to get genres
 */
