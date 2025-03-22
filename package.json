@@ -7,13 +7,15 @@
   "main": "build/src/server.js",
   "scripts": {
     "build": "tsoa spec-and-routes && tsc",
-    "start": "node --env-file=.env build/src/server.js"
+    "start": "node --env-file=.env build/src/server.js",
+    "start:watch": "nodemon --watch 'src/**/*.ts' --ext ts,js,json --exec 'npm run build && npm run start'"
   },
   "dependencies": {
     "express": "^4.21.2",
     "tsoa": "^6.6.0"
   },
   "devDependencies": {
+    "nodemon": "^2.0.22",
     "@types/express": "^5.0.1",
     "@types/node": "^22.13.11",
     "typescript": "^5.8.2"
