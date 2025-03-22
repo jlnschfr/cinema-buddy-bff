@@ -7,8 +7,7 @@ export class RecommendationsService {
       method: "GET",
       headers: {
         accept: "application/json",
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyNzBkOWUzNjZiODQwYWQ5ODY5MmRkZjViMDYzZWMzZiIsIm5iZiI6MTc0MjY0MzczNi43Miwic3ViIjoiNjdkZWEyMTg0YWE5NjZjZThjNjliZWI3Iiwic2NvcGVzIjpbImFwaV9yZWFkIl0sInZlcnNpb24iOjF9.VhGLmK6hHv-pZdotWhjpDByTzEBnv9_jM17UTg3ik0M",
+        Authorization:`Bearer ${process.env.BEARER_TOKEN}`,
       },
     };
 
@@ -20,16 +19,13 @@ export class RecommendationsService {
       releaseDate: movie.release_date
     }));
 
-    console.log(movies);
-    console.log(categories);
-
     return movies;
   }
 }
 
 /* 
 todos: 
-* optimize bearer
-* make genres dynamic in recommendationsService
+* watch task
+* make genres and year dynamic in recommendationsService
 * endpoint to get genres
 */

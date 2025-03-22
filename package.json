@@ -7,7 +7,7 @@
   "main": "build/src/server.js",
   "scripts": {
     "build": "tsoa spec-and-routes && tsc",
-    "start": "node build/src/server.js"
+    "start": "node --env-file=.env build/src/server.js"
   },
   "dependencies": {
     "express": "^4.21.2",
