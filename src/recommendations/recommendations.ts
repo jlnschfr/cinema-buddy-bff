@@ -2,6 +2,7 @@ export interface Movie {
   title: string;
   releaseDate: string;
   vote: string;
+  imageSrc: string;
 }
 
 export interface RecommendationResponse {

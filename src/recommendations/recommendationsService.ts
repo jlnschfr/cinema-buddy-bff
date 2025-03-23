@@ -19,6 +19,7 @@ export class RecommendationsService {
       title: movie.original_title,
       releaseDate: movie.release_date,
       vote: movie.vote_average.toString(),
+      imageSrc: `https://image.tmdb.org/t/p/w500${movie.backdrop_path}`,
     }));
 
     return {
@@ -29,8 +30,3 @@ export class RecommendationsService {
     }
   }
 }
-
-/* 
-todos: 
-* endpoint to get genres
-*/

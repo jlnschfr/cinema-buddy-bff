@@ -11,13 +11,15 @@
     "start:watch": "nodemon --watch 'src/**/*.ts' --ext ts,js,json --exec 'npm run build && npm run start'"
   },
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.21.2",
     "tsoa": "^6.6.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.22",
+    "@types/cors": "^2.8.17",
     "@types/express": "^5.0.1",
     "@types/node": "^22.13.11",
+    "nodemon": "^2.0.22",
     "typescript": "^5.8.2"
   }
 }
